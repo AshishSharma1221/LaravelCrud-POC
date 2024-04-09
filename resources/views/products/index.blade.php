@@ -7,7 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Product index page</h1>
-    <div>Products to be shown here</div>
+    <h1>All Products</h1>
+    
+    <div>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            @foreach ($products as $product)
+                <tr>
+                    <td>{{$product ->id}}</td>
+                    <td>{{$product ->name}}</td>
+                    <td>{{$product ->description}}</td>
+                    <td>{{$product ->quantity}}</td>
+                    <td>{{$product ->price}}</td>
+                </tr>
+            @endforeach
+        </table>
+    </div>
 </body>
 </html>
