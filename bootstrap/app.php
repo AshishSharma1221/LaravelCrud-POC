@@ -3,6 +3,14 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
+
+// header('Access-Control-Allow-Origin: *');
+
+// header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+
+// header("Access-Control-Allow-Headers: X-Requested-With, Authorization, Content-Type, X-CSRF-TOKEN");
+
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -12,7 +20,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
+        $middleware->statefulApi();
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
+   
+
+   
